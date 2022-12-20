@@ -21,6 +21,22 @@ int stricmp (const char* str1, const char* str2)
     return tolower (str1[i]) - tolower (str2[i]);
 }
 
+int skip_spaces (char** string)
+{
+    int count = 0;
+
+    while (isspace (**string))
+    {
+        if ((**string) == '\n')
+        {
+            count++;
+        }
+        (*string)++;
+    }
+
+    return count;
+}
+
 char* bracket_find (char* current_position)
 {
     int i = 0;

@@ -3,7 +3,7 @@
 
 //#define NDEBUG
 
-typedef struct Knot* Elem_t;
+typedef struct Node* Elem_t;
 
 #include <stdio.h>
 #include <stdlib.h>

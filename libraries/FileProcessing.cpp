@@ -52,7 +52,7 @@ int BufferCreater (struct FileInfo* file_info, struct Text* text_info)
 
     FILE* text = fopen (file_info->file_name, "rb");
     if (!text)
-    {
+    {   
         return ERROR_FILE_OPEN;
     }
 

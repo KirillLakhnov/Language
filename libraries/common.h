@@ -36,6 +36,8 @@ void clear_input ();
 
 int stricmp (const char* str1, const char* str2);
 
+int skip_spaces (char** string);
+
 char* bracket_find (char* current_position);
 
 int factorial (int value);

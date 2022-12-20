@@ -1,0 +1,34 @@
+{ ST 
+{ FUNC 
+{ "main"
+{ PARAM 
+{ VAR 
+{ "z"
+}
+{ NIL 
+}
+}
+{ NIL 
+}
+}
+{ Void 
+}
+}
+{ ST 
+{ VAR 
+{ "x"
+}
+{ ADD 
+{ "z"
+}
+{ "y"
+}
+}
+}
+{ NIL 
+}
+}
+}
+{ NIL 
+}
+}

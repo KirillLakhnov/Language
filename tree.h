@@ -8,8 +8,10 @@
 #include <assert.h>
 
 #include "enum.h"
+#include "FRONTEND/parser.h"
 #include "libraries/FileProcessing.h"
 #include "libraries/common.h"
+#include "libraries/stack.h"
 
 const double POISON_VALUE = NAN;
 const size_t MAX_LEN_STR = 300;
@@ -32,20 +34,87 @@ enum TREE_ERROR
     TREE_ERROR_BUFFER_CREATER = 1 << 10,
 };
 
-struct Knot
-{
-    struct Knot* prev;
+enum TYPE {
+    VALUE     = 1,
+    VARIABLE  = 2,
 
-    struct Knot* right;
-    struct Knot* left;
+    OPERATION = 3,
+    SEPARATOR = 4,
+    FUNCTION  = 5,
+
+    TYPE_FUNC = 6,
+
+    PARAM = 7,
+    NIL   = 8,
+    ST    = 9,
+    FUNC  = 10,
+};
+
+enum OP_TYPE {
+    ADD    = 1,
+    SUB    = 2,
+    MUL    = 3,
+    DIV    = 4,
+    POW    = 5,
+    SIN    = 6,
+    COS    = 7,
+    ASSIGN = 8,
+    IF     = 9,
+    ELSE   = 10,
+    WHILE  = 11,
+    RETURN = 12,
+};
+
+enum SEPARATOR_TYPE {
+    OPEN_STANDART_BRACKET  = 1,
+    OPEN_CURLY_BRACKET     = 2,
+    CLOSE_STANDART_BRACKET = 3,
+    CLOSE_CURLY_BRACKET    = 4,
+
+    COMMA_POINT = 5,
+    COMMA       = 6,
+};
+
+enum FUNCTION_TYPE {
+    PRINTF = 1,
+    SCANF  = 2,
+};
+
+enum TYPE_FUNC_TYPE {
+    VOID = 1,
+    TYPE = 2,
+    VAR  = 3,
+};
+
+struct Node
+{
+    struct Node* prev;
+
+    struct Node* right;
+    struct Node* left;
+
+    enum TYPE type;
+
+    union
+    {
+        enum OP_TYPE op_type;
+        enum SEPARATOR_TYPE separator_type;
+        enum FUNCTION_TYPE function_type;
+        enum TYPE_FUNC_TYPE type_func_type;
+
+        double value;
+        char* variable;
+    };
+
+    int number_line;
 };
 
 struct Tree 
 {
-    struct FileInfo* file_function;
-    struct Text* buffer_function;
+    struct FileInfo* file_language;
+    struct Text* buffer_language;
 
-    struct Knot* root;
+    struct Node* root;
 
     size_t size;
     size_t code_error;
@@ -55,6 +124,28 @@ void tree_ctor (struct Tree* tree);
 
 void tree_dtor (struct Tree* tree);
 
-void knot_dtor (struct Knot* current_knot);
+void node_dtor (struct Node* current_node);
 
-#endif TREE_H
+//=====================================================================
+
+Node* node_creater (Node* prev, Node* left, Node* right, enum TYPE type);
+
+Node* node_op_creater (Node* prev, Node* left, Node* right, enum OP_TYPE op_type);
+
+Node* node_signs_creater (Node* prev, Node* left, Node* right, enum SEPARATOR_TYPE separator_type);
+
+Node* node_func_creater (Node* prev, Node* left, Node* right, enum FUNCTION_TYPE function_type);
+
+Node* node_val_creater (Node* prev, Node* left, Node* right, double value);
+
+Node* node_var_creater (Node* prev, Node* left, Node* right, char* variable);
+
+Node* node_type_func_creater (Node* prev, Node* left, Node* right, enum TYPE_FUNC_TYPE type);
+
+//=====================================================================
+
+void knot_graph (struct Tree* tree, struct Node* current_node, FILE* tree_log_graph, int* count);
+
+int tree_graph_dump (struct Tree* tree);
+
+#endif // TREE_H

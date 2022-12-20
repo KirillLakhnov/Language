@@ -1,0 +1,56 @@
+digraph G
+{
+	graph [dpi = 250];
+	rankdir = TB;
+	"0x6040000003d0" [shape = "record", style = "rounded, filled", fontname = "Helvetica-Bold", fillcolor = "#87CEFA",
+		label = "prev = 0x0 \lcurrent = 0x6040000003d0 | {<left> left = 0x604000000410| ST | <right> right = 0x6040000007d0}"]
+	 "0x6040000003d0" -> "0x604000000410" [style = "bold"]
+	 "0x6040000003d0" -> "0x6040000007d0" [style = "bold"]
+	"0x604000000410" [shape = "record", style = "rounded, filled", fontname = "Helvetica-Bold", fillcolor = "#87CEFA",
+		label = "prev = 0x6040000003d0 \lcurrent = 0x604000000410 | {<left> left = 0x604000000450| FUNC | <right> right = 0x604000000610}"]
+	 "0x604000000410" -> "0x604000000450" [style = "bold"]
+	 "0x604000000410" -> "0x604000000610" [style = "bold"]
+	"0x604000000450" [shape = "record", style = "rounded, filled", fontname = "Helvetica-Bold", fillcolor = "#87CEFA",
+		label = "prev = 0x604000000410 \lcurrent = 0x604000000450 | {<left> left = 0x604000000490| main | <right> right = 0x6040000005d0}"]
+	 "0x604000000450" -> "0x604000000490" [style = "bold"]
+	 "0x604000000450" -> "0x6040000005d0" [style = "bold"]
+	"0x604000000490" [shape = "record", style = "rounded, filled", fontname = "Helvetica-Bold", fillcolor = "#87CEFA",
+		label = "prev = 0x604000000450 \lcurrent = 0x604000000490 | {<left> left = 0x6040000004d0| PARAM | <right> right = 0x604000000590}"]
+	 "0x604000000490" -> "0x6040000004d0" [style = "bold"]
+	 "0x604000000490" -> "0x604000000590" [style = "bold"]
+	"0x6040000004d0" [shape = "record", style = "rounded, filled", fontname = "Helvetica-Bold", fillcolor = "#87CEFA",
+		label = "prev = 0x604000000490 \lcurrent = 0x6040000004d0 | {<left> left = 0x604000000510| VAR | <right> right = 0x604000000550}"]
+	 "0x6040000004d0" -> "0x604000000510" [style = "bold"]
+	 "0x6040000004d0" -> "0x604000000550" [style = "bold"]
+	"0x604000000510" [shape = "record", style = "rounded, filled", fontname = "Helvetica-Bold", fillcolor = "#ee9b52",
+		label = "prev = 0x6040000004d0 \lcurrent = 0x604000000510 | {<left> left = 0x0| z | <right> right = 0x0}"]
+	"0x604000000550" [shape = "record", style = "rounded, filled", fontname = "Helvetica-Bold", fillcolor = "#ee9b52",
+		label = "prev = 0x6040000004d0 \lcurrent = 0x604000000550 | {<left> left = 0x0| NIL | <right> right = 0x0}"]
+	"0x604000000590" [shape = "record", style = "rounded, filled", fontname = "Helvetica-Bold", fillcolor = "#ee9b52",
+		label = "prev = 0x604000000490 \lcurrent = 0x604000000590 | {<left> left = 0x0| NIL | <right> right = 0x0}"]
+	"0x6040000005d0" [shape = "record", style = "rounded, filled", fontname = "Helvetica-Bold", fillcolor = "#ee9b52",
+		label = "prev = 0x604000000450 \lcurrent = 0x6040000005d0 | {<left> left = 0x0| VOID | <right> right = 0x0}"]
+	"0x604000000610" [shape = "record", style = "rounded, filled", fontname = "Helvetica-Bold", fillcolor = "#87CEFA",
+		label = "prev = 0x604000000410 \lcurrent = 0x604000000610 | {<left> left = 0x604000000650| ST | <right> right = 0x604000000790}"]
+	 "0x604000000610" -> "0x604000000650" [style = "bold"]
+	 "0x604000000610" -> "0x604000000790" [style = "bold"]
+	"0x604000000650" [shape = "record", style = "rounded, filled", fontname = "Helvetica-Bold", fillcolor = "#87CEFA",
+		label = "prev = 0x604000000610 \lcurrent = 0x604000000650 | {<left> left = 0x604000000690| VAR | <right> right = 0x6040000006d0}"]
+	 "0x604000000650" -> "0x604000000690" [style = "bold"]
+	 "0x604000000650" -> "0x6040000006d0" [style = "bold"]
+	"0x604000000690" [shape = "record", style = "rounded, filled", fontname = "Helvetica-Bold", fillcolor = "#ee9b52",
+		label = "prev = 0x604000000650 \lcurrent = 0x604000000690 | {<left> left = 0x0| x | <right> right = 0x0}"]
+	"0x6040000006d0" [shape = "record", style = "rounded, filled", fontname = "Helvetica-Bold", fillcolor = "#87CEFA",
+		label = "prev = 0x604000000650 \lcurrent = 0x6040000006d0 | {<left> left = 0x604000000710| ADD | <right> right = 0x604000000750}"]
+	 "0x6040000006d0" -> "0x604000000710" [style = "bold"]
+	 "0x6040000006d0" -> "0x604000000750" [style = "bold"]
+	"0x604000000710" [shape = "record", style = "rounded, filled", fontname = "Helvetica-Bold", fillcolor = "#ee9b52",
+		label = "prev = 0x6040000006d0 \lcurrent = 0x604000000710 | {<left> left = 0x0| z | <right> right = 0x0}"]
+	"0x604000000750" [shape = "record", style = "rounded, filled", fontname = "Helvetica-Bold", fillcolor = "#ee9b52",
+		label = "prev = 0x6040000006d0 \lcurrent = 0x604000000750 | {<left> left = 0x0| y | <right> right = 0x0}"]
+	"0x604000000790" [shape = "record", style = "rounded, filled", fontname = "Helvetica-Bold", fillcolor = "#ee9b52",
+		label = "prev = 0x604000000610 \lcurrent = 0x604000000790 | {<left> left = 0x0| NIL | <right> right = 0x0}"]
+	"0x6040000007d0" [shape = "record", style = "rounded, filled", fontname = "Helvetica-Bold", fillcolor = "#ee9b52",
+		label = "prev = 0x6040000003d0 \lcurrent = 0x6040000007d0 | {<left> left = 0x0| NIL | <right> right = 0x0}"]
+
+}
