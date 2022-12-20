@@ -915,8 +915,6 @@ Node* GetDeclaringVar (struct Tree* tree, struct Stack* token_tree, int* index)
                                       ST);
             PNODE = st_node;
             NODE = st_node;
-
-            GetAfterCommaPoint (tree, token_tree, index, NODE);
         }
         else
         {
@@ -972,7 +970,6 @@ Node* GetAssignVar (struct Tree* tree, struct Stack* token_tree, int* index)
             PNODE = st_node;
             NODE = st_node;
 
-            GetAfterCommaPoint (tree, token_tree, index, NODE);
         }
         else
         {

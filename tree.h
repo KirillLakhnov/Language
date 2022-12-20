@@ -128,6 +128,12 @@ void node_dtor (struct Node* current_node);
 
 //=====================================================================
 
+void tree_reverse_frontend_creater (struct Tree* tree, char** current_position);
+
+Node* node_reverse_frontend_creater (struct Tree* tree, struct Node* prev, char** current_position);
+
+//=====================================================================
+
 Node* node_creater (Node* prev, Node* left, Node* right, enum TYPE type);
 
 Node* node_op_creater (Node* prev, Node* left, Node* right, enum OP_TYPE op_type);

@@ -8,7 +8,15 @@
 { NIL 
 }
 }
+{ PARAM 
+{ VAR 
+{ "y"
+}
 { NIL 
+}
+}
+{ NIL 
+}
 }
 }
 { Void 
@@ -18,14 +26,106 @@
 { VAR 
 { "x"
 }
-{ ADD 
-{ "z"
+{ 7 
 }
-{ "y"
+}
+{ ST 
+{ WHILE 
+{ ADD 
+{ 26 
+}
+{ 3 
+}
+}
+{ ST 
+{ EQ 
+{ "x"
+}
+{ ADD 
+{ "x"
+}
+{ 5 
 }
 }
 }
 { NIL 
+}
+}
+}
+{ ST 
+{ IF 
+{ ADD 
+{ 17 
+}
+{ "x"
+}
+}
+{ ELSE 
+{ ST 
+{ VAR 
+{ "y"
+}
+{ 5 
+}
+}
+{ NIL 
+}
+}
+{ ST 
+{ VAR 
+{ "y"
+}
+{ "x"
+}
+}
+{ NIL 
+}
+}
+}
+}
+{ ST 
+{ VAR 
+{ "k"
+}
+{ 8 
+}
+}
+{ ST 
+{ OUT 
+{ PARAM 
+{ DIV 
+{ "a"
+}
+{ 2 
+}
+}
+{ PARAM 
+{ POW 
+{ 66 
+}
+{ 23 
+}
+}
+{ PARAM 
+{ ADD 
+{ "s"
+}
+{ "x"
+}
+}
+{ NIL 
+}
+}
+}
+}
+{ NIL 
+}
+}
+{ NIL 
+}
+}
+}
+}
 }
 }
 }

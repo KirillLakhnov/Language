@@ -12,4 +12,6 @@
 #include "../DSL.h"
 #include "../libraries/stack.h"
 
+void tree_backend_ctor (struct Tree* tree);
+
 #endif // BACKEND_H
