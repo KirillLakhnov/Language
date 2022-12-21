@@ -1,0 +1,88 @@
+push 1
+jmp :main
+
+factorial_while:
+
+push [0]
+pop [1]
+while0x604000000750:
+push [0]
+push 1
+sub
+push 0
+ja :whilebody0x604000000750
+jmp :whileafter0x604000000750
+whilebody0x604000000750:
+push [0]
+push 1
+sub
+pop [0]
+push [1]
+push [0]
+mul
+pop [1]
+jmp :while0x604000000750
+whileafter0x604000000750:
+push [1]
+pop rax
+ret
+
+factorial_recursive:
+
+push [2]
+push 0
+ja :if0x604000000f50
+jmp :ifnot0x604000000f50
+
+if0x604000000f50:
+push [2]
+push [2]
+push 1
+sub
+pop [2]
+call :factorial_recursive
+push rax
+mul
+pop rax
+
+jmp :ifafter0x604000000f50
+
+ifnot0x604000000f50:
+push [2]
+push 1
+add
+push 0
+ja :if0x604000001490
+jmp :ifnot0x604000001490
+if0x604000001490:
+push 1
+pop rax
+
+ifnot0x604000001490:
+ifafter0x604000000f50:
+ret
+
+main:
+
+push 0
+pop [3]
+
+in
+pop [3]
+push [3]
+pop [0]
+call :factorial_while
+push rax
+pop [4]
+push [3]
+pop [2]
+call :factorial_recursive
+push rax
+pop [5]
+push [4]
+out
+
+push [5]
+out
+
+hlt

@@ -1,18 +1,12 @@
-void main (var z, var y)
+var y = 23;
+void qwerty (var x, var k)
 {
-	var x = 7;
-	while (26 + 3)
-	{
-		x = x + 5;
-	}
-	if (17 + x)
-	{
-		var y = 5;
-	}
-	else
-	{
-		var y = x;
-	}
-	var k = 8;
-	printf (a / 2, pow (66, 23), s + x);
+	x = 3;
+	printf (x, 100, 200 - 100 + 60, x + 6);
+}
+void main ()
+{
+	var z = 8;
+	var r = 10;
+	qwerty (z, r);
 }

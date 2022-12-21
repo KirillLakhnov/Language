@@ -20,6 +20,7 @@ enum ERRORS {
     ERROR_COMMAND_CMP               = 15,
     ERROR_STACK_CTOR                = 16,
     ERROR_FWRITE                    = 17,
+    ERROR_COMPILATION               = 18,
 };
 
 #endif // ENUMS_H

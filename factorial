@@ -1,0 +1,37 @@
+void functorial_while (var n)
+{
+    var rezult = n;
+    while (n - 1)
+    {
+        n = n - 1;
+        rezult = rezult * n;
+    }
+
+    return rezult;
+}
+
+type factorial_recursive (var n)
+{
+    if (n)
+    {
+        return n * factorial_recursive (n - 1);
+    }
+    else
+    {
+        if (n + 1)
+        {
+            return 1;
+        }
+    }
+}
+
+void main ()
+{
+    var n = 0;
+    scanf (n);
+
+    var rezult_while = functorial_while (n);
+    var rezult_recursive = factorial_recursive (n);
+
+    printf (rezult_while, rezult_recursive);
+}

@@ -63,3 +63,20 @@
                                         return nullptr;                                                                                                             \
                                     }
 
+#define COMMENT_CLOSE_CHECK(current_symbol) while (strncmp("*/", current_symbol, 2) != 0)                                                                                       \
+                                            {                                                                                                                                   \
+                                                if (*(current_symbol + 1) == '\0')                                                                                              \
+                                                {                                                                                                                               \
+                                                    printf ("Syntax error in %s: absent */, but there is /* on the line %d\n", tree->file_language->file_name, number_line);    \
+                                                    return nullptr;                                                                                                             \
+                                                }                                                                                                                               \
+                                                current_symbol++;                                                                                                               \
+                                            }                                                                                                                                   \
+                                            current_symbol += 2;
+
+#define UNKNOWN_COMMAND(number_line)    printf ("Syntax error in %s: unknown command on line %d", tree->file_language->file_name, number_line); \
+                                        return nullptr;
+
+#define CURRENT_GLOB_VAR tree->ram->global_var[tree->ram->num_global_var]
+#define CURRENT_FUNC tree->ram->function[tree->ram->num_func]
+#define _CURRENT_FUNC_ tree->ram->function[tree->ram->num_func - 1]

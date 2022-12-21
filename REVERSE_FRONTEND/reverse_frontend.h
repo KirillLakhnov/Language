@@ -18,6 +18,12 @@ void tree_print_on_language (FILE* language_tree, struct Node* root, int* table_
 
 //=================================================================
 
+void tree_reverse_frontend_creater (struct Tree* tree, char** current_position);
+
+Node* node_reverse_frontend_creater (struct Tree* tree, struct Node* prev, char** current_position);
+
+//=================================================================
+
 void skip_space (char** current_position);
 
 void table_printf (FILE* file, int number_table);

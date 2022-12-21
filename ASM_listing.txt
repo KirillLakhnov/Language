@@ -1,0 +1,69 @@
+Assembler version: 3
+Assembler signature: DA
+
+
+  Adress   Number     Code     Text
+       0        1  20 2  1     PUSH 1
+     0xa        2  30 10 350    JMP :MAIN 
+    0x14        3  20 6  0     PUSH 0
+    0x1e        4  21 6  1      POP 1
+    0x28        5  20 6  0     PUSH 0
+    0x32        6  20 2  1     PUSH 1
+    0x3c        7       42      SUB
+    0x3d        8  20 2  0     PUSH 0
+    0x47        9  31 10 91     JA :WHILEBODY0X604000000750 
+    0x51       10  30 10 163    JMP :WHILEAFTER0X604000000750 
+    0x5b       11  20 6  0     PUSH 0
+    0x65       12  20 2  1     PUSH 1
+    0x6f       13       42      SUB
+    0x70       14  21 6  0      POP 0
+    0x7a       15  20 6  1     PUSH 1
+    0x84       16  20 6  0     PUSH 0
+    0x8e       17       43      MUL
+    0x8f       18  21 6  1      POP 1
+    0x99       19  30 10 40    JMP :WHILE0X604000000750 
+    0xa3       20  20 6  1     PUSH 1
+    0xad       21  21 1 140389596004449      POP RAX
+    0xb0       22       38      RET
+    0xb1       23  20 6  2     PUSH 2
+    0xbb       24  20 2  0     PUSH 0
+    0xc5       25  31 10 217     JA :IF0X604000000F50 
+    0xcf       26  30 10 285    JMP :IFNOT0X604000000F50 
+    0xd9       27  20 6  2     PUSH 2
+    0xe3       28  20 6  2     PUSH 2
+    0xed       29  20 2  1     PUSH 1
+    0xf7       30       42      SUB
+    0xf8       31  21 6  2      POP 2
+   0x102       32  37 10 177   CALL :FACTORIAL_RECURSIVE 
+   0x10c       33  20 1 97     PUSH RAX
+   0x10f       34       43      MUL
+   0x110       35  21 1 97      POP RAX
+   0x113       36  30 10 349    JMP :IFAFTER0X604000000F50 
+   0x11d       37  20 6  2     PUSH 2
+   0x127       38  20 2  1     PUSH 1
+   0x131       39       41      ADD
+   0x132       40  20 2  0     PUSH 0
+   0x13c       41  31 10 336     JA :IF0X604000001490 
+   0x146       42  30 10 349    JMP :IFNOT0X604000001490 
+   0x150       43  20 2  1     PUSH 1
+   0x15a       44  21 1 140389596004449      POP RAX
+   0x15d       45       38      RET
+   0x15e       46  20 2  0     PUSH 0
+   0x168       47  21 6  3      POP 3
+   0x172       48    10  0       IN
+   0x174       49  21 6  3      POP 3
+   0x17e       50  20 6  3     PUSH 3
+   0x188       51  21 6  0      POP 0
+   0x192       52  37 10 20   CALL :FACTORIAL_WHILE 
+   0x19c       53  20 1 97     PUSH RAX
+   0x19f       54  21 6  4      POP 4
+   0x1a9       55  20 6  3     PUSH 3
+   0x1b3       56  21 6  2      POP 2
+   0x1bd       57  37 10 177   CALL :FACTORIAL_RECURSIVE 
+   0x1c7       58  20 1 97     PUSH RAX
+   0x1ca       59  21 6  5      POP 5
+   0x1d4       60  20 6  4     PUSH 4
+   0x1de       61    11  0      OUT
+   0x1e0       62  20 6  5     PUSH 5
+   0x1ea       63    11  0      OUT
+   0x1ec       64        0      HLT

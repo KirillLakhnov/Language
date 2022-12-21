@@ -35,34 +35,35 @@ enum TREE_ERROR
 };
 
 enum TYPE {
-    VALUE     = 1,
-    VARIABLE  = 2,
+    VALUE     = 1, //+
+    VARIABLE  = 2, //+
 
-    OPERATION = 3,
+    OPERATION = 3, //+
     SEPARATOR = 4,
-    FUNCTION  = 5,
+    FUNCTION  = 5, //+
 
-    TYPE_FUNC = 6,
+    TYPE_FUNC = 6, //+
 
-    PARAM = 7,
-    NIL   = 8,
-    ST    = 9,
+    PARAM = 7, //+
+    NIL   = 8, //+
+    ST    = 9, //+
     FUNC  = 10,
+    CALL  = 11,
 };
 
 enum OP_TYPE {
-    ADD    = 1,
-    SUB    = 2,
-    MUL    = 3,
-    DIV    = 4,
-    POW    = 5,
-    SIN    = 6,
-    COS    = 7,
-    ASSIGN = 8,
-    IF     = 9,
-    ELSE   = 10,
+    ADD    = 1, //+
+    SUB    = 2, //+
+    MUL    = 3, //+
+    DIV    = 4, //+
+    POW    = 5, //+
+    SIN    = 6, //+
+    COS    = 7, //+
+    EQ     = 8, //+
+    IF     = 9, //
+    ELSE   = 10,//
     WHILE  = 11,
-    RETURN = 12,
+    RET    = 12,
 };
 
 enum SEPARATOR_TYPE {
@@ -73,11 +74,12 @@ enum SEPARATOR_TYPE {
 
     COMMA_POINT = 5,
     COMMA       = 6,
+    COMMENT     = 7,
 };
 
 enum FUNCTION_TYPE {
-    PRINTF = 1,
-    SCANF  = 2,
+    OUT = 1, //+
+    IN  = 2, //+
 };
 
 enum TYPE_FUNC_TYPE {
@@ -113,6 +115,7 @@ struct Tree
 {
     struct FileInfo* file_language;
     struct Text* buffer_language;
+    struct RAM* ram;
 
     struct Node* root;
 
@@ -125,12 +128,6 @@ void tree_ctor (struct Tree* tree);
 void tree_dtor (struct Tree* tree);
 
 void node_dtor (struct Node* current_node);
-
-//=====================================================================
-
-void tree_reverse_frontend_creater (struct Tree* tree, char** current_position);
-
-Node* node_reverse_frontend_creater (struct Tree* tree, struct Node* prev, char** current_position);
 
 //=====================================================================
 

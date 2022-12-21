@@ -9,5 +9,8 @@ int main ()
     struct FileInfo file_language = {.file_name = name_file_language};
     struct Tree tree = {.file_language = &file_language, .buffer_language = &buffer_language};
 
-    tree_backend_ctor (&tree);
+    if (tree_backend_ctor (&tree) != GOOD_WORKING)
+    {
+        return 1;
+    }
 }

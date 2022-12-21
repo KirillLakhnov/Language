@@ -1,71 +1,178 @@
 { ST 
 { FUNC 
+{ "factorial_while"
+{ PARAM 
+{ VAR 
+{ "n"
+}
+{ NIL 
+}
+}
+{ NIL 
+}
+}
+{ Type 
+}
+}
+{ ST 
+{ VAR 
+{ "rezult"
+}
+{ "n"
+}
+}
+{ ST 
+{ WHILE 
+{ SUB 
+{ "n"
+}
+{ 1 
+}
+}
+{ ST 
+{ EQ 
+{ "n"
+}
+{ SUB 
+{ "n"
+}
+{ 1 
+}
+}
+}
+{ ST 
+{ EQ 
+{ "rezult"
+}
+{ MUL 
+{ "rezult"
+}
+{ "n"
+}
+}
+}
+{ NIL 
+}
+}
+}
+}
+{ ST 
+{ RET 
+{ "rezult"
+}
+{ NIL 
+}
+}
+{ NIL 
+}
+}
+}
+}
+}
+{ ST 
+{ FUNC 
+{ "factorial_recursive"
+{ PARAM 
+{ VAR 
+{ "n"
+}
+{ NIL 
+}
+}
+{ NIL 
+}
+}
+{ Type 
+}
+}
+{ ST 
+{ IF 
+{ "n"
+}
+{ ELSE 
+{ ST 
+{ RET 
+{ MUL 
+{ "n"
+}
+{ ST 
+{ CALL 
+{ "factorial_recursive"
+{ PARAM 
+{ SUB 
+{ "n"
+}
+{ 1 
+}
+}
+{ NIL 
+}
+}
+{ NIL 
+}
+}
+{ NIL 
+}
+}
+{ NIL 
+}
+}
+}
+{ NIL 
+}
+}
+{ NIL 
+}
+}
+{ ST 
+{ IF 
+{ ADD 
+{ "n"
+}
+{ 1 
+}
+}
+{ ST 
+{ RET 
+{ 1 
+}
+{ NIL 
+}
+}
+{ NIL 
+}
+}
+}
+{ NIL 
+}
+}
+}
+}
+{ NIL 
+}
+}
+}
+{ ST 
+{ FUNC 
 { "main"
-{ PARAM 
-{ VAR 
-{ "z"
-}
 { NIL 
-}
-}
-{ PARAM 
-{ VAR 
-{ "y"
-}
-{ NIL 
-}
-}
-{ NIL 
-}
-}
 }
 { Void 
 }
 }
 { ST 
 { VAR 
-{ "x"
+{ "n"
 }
-{ 7 
-}
-}
-{ ST 
-{ WHILE 
-{ ADD 
-{ 26 
-}
-{ 3 
+{ 0 
 }
 }
 { ST 
-{ EQ 
-{ "x"
-}
-{ ADD 
-{ "x"
-}
-{ 5 
-}
-}
+{ IN 
+{ PARAM 
+{ "n"
 }
 { NIL 
-}
-}
-}
-{ ST 
-{ IF 
-{ ADD 
-{ 17 
-}
-{ "x"
-}
-}
-{ ELSE 
-{ ST 
-{ VAR 
-{ "y"
-}
-{ 5 
 }
 }
 { NIL 
@@ -73,48 +180,59 @@
 }
 { ST 
 { VAR 
-{ "y"
+{ "rezult_while"
 }
-{ "x"
+{ ST 
+{ CALL 
+{ "factorial_while"
+{ PARAM 
+{ "n"
+}
+{ NIL 
+}
+}
+{ NIL 
+}
+}
+{ NIL 
 }
 }
 { NIL 
 }
 }
 }
-}
 { ST 
 { VAR 
-{ "k"
+{ "rezult_recursive"
 }
-{ 8 
+{ ST 
+{ CALL 
+{ "factorial_recursive"
+{ PARAM 
+{ "n"
+}
+{ NIL 
+}
+}
+{ NIL 
+}
+}
+{ NIL 
+}
+}
+{ NIL 
+}
 }
 }
 { ST 
 { OUT 
 { PARAM 
-{ DIV 
-{ "a"
-}
-{ 2 
-}
+{ "rezult_while"
 }
 { PARAM 
-{ POW 
-{ 66 
-}
-{ 23 
-}
-}
-{ PARAM 
-{ ADD 
-{ "s"
-}
-{ "x"
-}
+{ "rezult_recursive"
 }
 { NIL 
-}
 }
 }
 }
@@ -130,5 +248,7 @@
 }
 }
 { NIL 
+}
+}
 }
 }

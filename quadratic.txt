@@ -1,0 +1,28 @@
+void main ()
+{
+    var a = 0;
+    var b = 0;
+    var c = 0;
+
+    scanf (a, b, c);
+
+    var discrimenant = pow (b, 2);
+
+
+    if (discrimenant)
+    {
+        var x1 = ((b*(1-2) + pow (discrimenant, 1/2))/(2*a));
+        var x2 = ((b*(1-2) - pow (discrimenant, 1/2))/(2*a));
+        
+        printf (x1, x2);
+    }
+    else
+    {
+        if (discrimenant + 1)
+        {
+            var x = (b*(1-2))/(2*a);
+
+            printf (x);
+        }
+    }
+}

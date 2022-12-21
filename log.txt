@@ -1,0 +1,377 @@
+ERROR: file CPU/libr/Stack.cpp line 84 function Stack_push
+Stack (ERROR #16: INVALID_PUSH [0x7ffeebe9e670] "&proc->stk" 
+{
+	left struct canary = baddf00ddeadbeaf
+	size = 2
+	capacity = 10
+	struct hash = 1929542220
+	stack hash = 1929542220
+	right struct canary = baddf00ddeadbeaf
+	data[0x7fb0564058c8]
+	{
+		*[0] = 1
+		*[1] = 2
+		*[2] = NAN (Poison!)
+		[3] = NAN (Poison!)
+		[4] = NAN (Poison!)
+		[5] = NAN (Poison!)
+		[6] = NAN (Poison!)
+		[7] = NAN (Poison!)
+		[8] = NAN (Poison!)
+		[9] = NAN (Poison!)
+	}
+}
+
+
+ERROR: file CPU/libr/Stack.cpp line 98 function Stack_pop
+Stack (ERROR #15: WRONG_STACK_HASH [0x7ffee4b14670] "&proc->stk" 
+{
+	left struct canary = baddf00ddeadbeaf
+	size = 2
+	capacity = 4
+	struct hash = 4083576938
+	stack hash = 2269805627
+	right struct canary = baddf00ddeadbeaf
+	data[0x7fd6fac058c8]
+	{
+		*[0] = 0
+		*[1] = 0
+		*[2] = NAN (Poison!)
+		[3] = NAN (Poison!)
+	}
+}
+
+
+ERROR: file CPU/libr/Stack.cpp line 98 function Stack_pop
+Stack (ERROR #15: WRONG_STACK_HASH [0x7ffee62c5670] "&proc->stk" 
+{
+	left struct canary = baddf00ddeadbeaf
+	size = 1
+	capacity = 4
+	struct hash = 628037759
+	stack hash = 1054865044
+	right struct canary = baddf00ddeadbeaf
+	data[0x7f83be4058c8]
+	{
+		*[0] = 0
+		*[1] = NAN (Poison!)
+		[2] = NAN (Poison!)
+		[3] = NAN (Poison!)
+	}
+}
+
+
+ERROR: file CPU/libr/Stack.cpp line 98 function Stack_pop
+Stack (ERROR #15: WRONG_STACK_HASH [0x7ffeee477670] "&proc->stk" 
+{
+	left struct canary = baddf00ddeadbeaf
+	size = 1
+	capacity = 4
+	struct hash = 2035978792
+	stack hash = 2671506814
+	right struct canary = baddf00ddeadbeaf
+	data[0x7ff4c1c058c8]
+	{
+		*[0] = 0
+		*[1] = NAN (Poison!)
+		[2] = NAN (Poison!)
+		[3] = NAN (Poison!)
+	}
+}
+
+
+ERROR: file CPU/libr/Stack.cpp line 98 function Stack_pop
+Stack (ERROR #15: WRONG_STACK_HASH [0x7ffee4c78670] "&proc->stk" 
+{
+	left struct canary = baddf00ddeadbeaf
+	size = 1
+	capacity = 4
+	struct hash = 4081593713
+	stack hash = 2416139496
+	right struct canary = baddf00ddeadbeaf
+	data[0x7fe1bec058c8]
+	{
+		*[0] = 0
+		*[1] = NAN (Poison!)
+		[2] = NAN (Poison!)
+		[3] = NAN (Poison!)
+	}
+}
+
+
+ERROR: file CPU/libr/Stack.cpp line 98 function Stack_pop
+Stack (ERROR #15: WRONG_STACK_HASH [0x7ffee034e670] "&proc->stk" 
+{
+	left struct canary = baddf00ddeadbeaf
+	size = 1
+	capacity = 4
+	struct hash = 3960077709
+	stack hash = 4103310970
+	right struct canary = baddf00ddeadbeaf
+	data[0x7fa9ac4058c8]
+	{
+		*[0] = 0
+		*[1] = NAN (Poison!)
+		[2] = NAN (Poison!)
+		[3] = NAN (Poison!)
+	}
+}
+
+
+ERROR: file CPU/libr/Stack.cpp line 98 function Stack_pop
+Stack (ERROR #15: WRONG_STACK_HASH [0x7ffee45a9670] "&proc->stk" 
+{
+	left struct canary = baddf00ddeadbeaf
+	size = 1
+	capacity = 4
+	struct hash = 298814011
+	stack hash = 1647615591
+	right struct canary = baddf00ddeadbeaf
+	data[0x7ffe474058c8]
+	{
+		*[0] = 0
+		*[1] = NAN (Poison!)
+		[2] = NAN (Poison!)
+		[3] = NAN (Poison!)
+	}
+}
+
+
+ERROR: file CPU/libr/Stack.cpp line 75 function Stack_push
+Stack (ERROR #15: WRONG_STACK_HASH [0x7ffeebb6b670] "&proc->stk" 
+{
+	left struct canary = baddf00ddeadbeaf
+	size = 1
+	capacity = 4
+	struct hash = 82388695
+	stack hash = 2969028217
+	right struct canary = baddf00ddeadbeaf
+	data[0x7ff7334058c8]
+	{
+		*[0] = 0
+		*[1] = NAN (Poison!)
+		[2] = NAN (Poison!)
+		[3] = NAN (Poison!)
+	}
+}
+
+
+ERROR: file CPU/libr/Stack.cpp line 98 function Stack_pop
+Stack (ERROR #15: WRONG_STACK_HASH [0x7ffeeb19e670] "&proc->stk" 
+{
+	left struct canary = baddf00ddeadbeaf
+	size = 1
+	capacity = 4
+	struct hash = 2910296826
+	stack hash = 1552946579
+	right struct canary = baddf00ddeadbeaf
+	data[0x7fc9fbc058c8]
+	{
+		*[0] = 0
+		*[1] = NAN (Poison!)
+		[2] = NAN (Poison!)
+		[3] = NAN (Poison!)
+	}
+}
+
+
+ERROR: file CPU/libr/Stack.cpp line 98 function Stack_pop
+Stack (ERROR #15: WRONG_STACK_HASH [0x7ffee2e82670] "&proc->stk" 
+{
+	left struct canary = baddf00ddeadbeaf
+	size = 1
+	capacity = 2
+	struct hash = 1736141221
+	stack hash = 4116869695
+	right struct canary = baddf00ddeadbeaf
+	data[0x7ff5b4c058c8]
+	{
+		*[0] = 3
+		*[1] = NAN (Poison!)
+	}
+}
+
+
+ERROR: file CPU/libr/Stack.cpp line 98 function Stack_pop
+Stack (ERROR #15: WRONG_STACK_HASH [0x7ffeebd9f670] "&proc->stk" 
+{
+	left struct canary = baddf00ddeadbeaf
+	size = 1
+	capacity = 4
+	struct hash = 83201904
+	stack hash = 291941822
+	right struct canary = baddf00ddeadbeaf
+	data[0x7ffec6c058c8]
+	{
+		*[0] = 0
+		*[1] = NAN (Poison!)
+		[2] = NAN (Poison!)
+		[3] = NAN (Poison!)
+	}
+}
+
+
+ERROR: file CPU/libr/Stack.cpp line 75 function Stack_push
+Stack (ERROR #15: WRONG_STACK_HASH [0x7ffee0384670] "&proc->stk" 
+{
+	left struct canary = baddf00ddeadbeaf
+	size = 1
+	capacity = 2
+	struct hash = 1567384394
+	stack hash = 3268411466
+	right struct canary = baddf00ddeadbeaf
+	data[0x7fd98e4058c8]
+	{
+		*[0] = 0
+		*[1] = NAN (Poison!)
+	}
+}
+
+
+ERROR: file CPU/libr/Stack.cpp line 98 function Stack_pop
+Stack (ERROR #15: WRONG_STACK_HASH [0x7ffee8316670] "&proc->stk" 
+{
+	left struct canary = baddf00ddeadbeaf
+	size = 1
+	capacity = 4
+	struct hash = 1337299759
+	stack hash = 1979630218
+	right struct canary = baddf00ddeadbeaf
+	data[0x7fc8eb4058c8]
+	{
+		*[0] = 0
+		*[1] = NAN (Poison!)
+		[2] = NAN (Poison!)
+		[3] = NAN (Poison!)
+	}
+}
+
+
+ERROR: file CPU/libr/Stack.cpp line 98 function Stack_pop
+Stack (ERROR #15: WRONG_STACK_HASH [0x7ffee11be670] "&proc->stk" 
+{
+	left struct canary = baddf00ddeadbeaf
+	size = 2
+	capacity = 4
+	struct hash = 3144944646
+	stack hash = 1531873560
+	right struct canary = baddf00ddeadbeaf
+	data[0x7fa9e6c058c8]
+	{
+		*[0] = 0
+		*[1] = 0
+		*[2] = NAN (Poison!)
+		[3] = NAN (Poison!)
+	}
+}
+
+
+ERROR: file CPU/libr/Stack.cpp line 75 function Stack_push
+Stack (ERROR #15: WRONG_STACK_HASH [0x7ffee2a76670] "&proc->stk" 
+{
+	left struct canary = baddf00ddeadbeaf
+	size = 1
+	capacity = 4
+	struct hash = 4255407057
+	stack hash = 3340396816
+	right struct canary = baddf00ddeadbeaf
+	data[0x7ff691c058c8]
+	{
+		*[0] = 0
+		*[1] = NAN (Poison!)
+		[2] = NAN (Poison!)
+		[3] = NAN (Poison!)
+	}
+}
+
+
+ERROR: file CPU/libr/Stack.cpp line 98 function Stack_pop
+Stack (ERROR #15: WRONG_STACK_HASH [0x7ffeee8b0670] "&proc->stk" 
+{
+	left struct canary = baddf00ddeadbeaf
+	size = 2
+	capacity = 4
+	struct hash = 2788886213
+	stack hash = 665165220
+	right struct canary = baddf00ddeadbeaf
+	data[0x7fbf174058c8]
+	{
+		*[0] = 0
+		*[1] = 0
+		*[2] = NAN (Poison!)
+		[3] = NAN (Poison!)
+	}
+}
+
+
+ERROR: file CPU/libr/Stack.cpp line 98 function Stack_pop
+Stack (ERROR #15: WRONG_STACK_HASH [0x7ffee7dcf670] "&proc->stk" 
+{
+	left struct canary = baddf00ddeadbeaf
+	size = 2
+	capacity = 4
+	struct hash = 1172493127
+	stack hash = 2136408378
+	right struct canary = baddf00ddeadbeaf
+	data[0x7fb27d4058c8]
+	{
+		*[0] = 0
+		*[1] = 0
+		*[2] = NAN (Poison!)
+		[3] = NAN (Poison!)
+	}
+}
+
+
+ERROR: file CPU/libr/Stack.cpp line 75 function Stack_push
+Stack (ERROR #15: WRONG_STACK_HASH [0x7ffeee14f670] "&proc->stk" 
+{
+	left struct canary = baddf00ddeadbeaf
+	size = 1
+	capacity = 4
+	struct hash = 2599490787
+	stack hash = 303431028
+	right struct canary = baddf00ddeadbeaf
+	data[0x7f9783c058c8]
+	{
+		*[0] = 0
+		*[1] = NAN (Poison!)
+		[2] = NAN (Poison!)
+		[3] = NAN (Poison!)
+	}
+}
+
+
+ERROR: file CPU/libr/Stack.cpp line 109 function Stack_pop
+Stack (ERROR #9: NULL_POP [0x7ffeecae3670] "&proc->stk" 
+{
+	left struct canary = baddf00ddeadbeaf
+	size = 0
+	capacity = 1
+	struct hash = 346868275
+	stack hash = 518733227
+	right struct canary = baddf00ddeadbeaf
+	data[0x7f8f9e405cc8]
+	{
+		*[0] = NAN (Poison!)
+	}
+}
+
+
+ERROR: file CPU/libr/Stack.cpp line 109 function Stack_pop
+Stack (ERROR #9: NULL_POP [0x7ffeec30b670] "&proc->stk" 
+{
+	left struct canary = baddf00ddeadbeaf
+	size = 0
+	capacity = 2
+	struct hash = 1939500905
+	stack hash = 849956403
+	right struct canary = baddf00ddeadbeaf
+	data[0x7fb55cc058c8]
+	{
+		*[0] = NAN (Poison!)
+		[1] = NAN (Poison!)
+	}
+}
+
+

@@ -1,22 +1,37 @@
-void main (var z, var y)
+type factorial_while (var n)
 {
-    var x = 7;
-
-    while (26 + 3)
+    var rezult = n;
+    while (n - 1)
     {
-        x = x + 5;
+        n = n - 1;
+        rezult = rezult * n;
     }
 
-    if (17 + x)
+    return rezult;
+}
+
+type factorial_recursive (var n)
+{
+    if (n)
     {
-        var y = 5;
+        return n * factorial_recursive (n - 1);
     }
     else
     {
-        var y = x;
+        if (n + 1)
+        {
+            return 1;
+        }
     }
+}
 
-    var k = 8;
+void main ()
+{
+    var n = 0;
+    scanf (n);
 
-    printf (a/2, pow(66, 23), s + x);
+    var rezult_while = factorial_while (n);
+    var rezult_recursive = factorial_recursive (n);
+
+    printf (rezult_while, rezult_recursive);
 }

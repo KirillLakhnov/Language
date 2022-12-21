@@ -1,0 +1,26 @@
+Assembler version: 3
+Assembler signature: DA
+
+
+  Adress   Number     Code     Text
+       0        1  20 2  1     PUSH 1
+     0xa        2  20 2  2     PUSH 2
+    0x14        3  30 10 30    JMP :MAIN 
+    0x1e        4  20 2  7     PUSH 7
+    0x28        5  21 6  0      POP 0
+    0x32        6  20 6  0     PUSH 0
+    0x3c        7  20 2  0     PUSH 0
+    0x46        8  31 10 90     JA :WHILEBODY0X604000000650 
+    0x50        9  30 10 157    JMP :WHILEAFTER0X604000000650 
+    0x5a       10  20 6  0     PUSH 0
+    0x64       11    11  0      OUT
+    0x66       12  20 6  0     PUSH 0
+    0x70       13  20 2  1     PUSH 1
+    0x7a       14       42      SUB
+    0x7b       15  21 6  0      POP 0
+    0x85       16  20 2  3     PUSH 3
+    0x8f       17       44      DIV
+    0x90       18       67      COS
+    0x91       19    11  0      OUT
+    0x93       20  30 10 50    JMP :WHILE0X604000000650 
+    0x9d       21        0      HLT

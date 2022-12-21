@@ -17,7 +17,6 @@ void tree_fronted_ctor (struct Tree* tree)
     {
         return;
     }
-    tree_graph_dump (tree);
 
     FILE* language_tree = fopen("language_tree.awp", "wb");
 
@@ -46,190 +45,48 @@ Stack* tokinization (struct Tree* tree, char* language_file, size_t size_file)
             break;
         }
 
-//=======================================================================================
-        if (strncmp ("if", current_symbol, 2) == 0)
+        if (strncmp ("/*", current_symbol, 2) == 0)
         {
-            NODE = node_op_creater (nullptr, nullptr, nullptr, IF);
-            NODE->number_line = number_line;
-            StackPush (stack_tree, NODE);
-            current_symbol += 2;
-        }
-        else if (strncmp ("else", current_symbol, 4) == 0)
-        {
-            NODE = node_op_creater (nullptr, nullptr, nullptr, ELSE);
-            NODE->number_line = number_line;
-            StackPush (stack_tree, NODE);
-            current_symbol += 4;
-        }
-        else if (strncmp ("while", current_symbol, 5) == 0)
-        {
-            NODE = node_op_creater (nullptr, nullptr, nullptr, WHILE);
-            NODE->number_line = number_line;
-            StackPush (stack_tree, NODE);
-            current_symbol += 5;
-        }
-        else if (strncmp ("return", current_symbol, 6) == 0)
-        {
-            NODE = node_op_creater (nullptr, nullptr, nullptr, RETURN);
-            NODE->number_line = number_line;
-            StackPush (stack_tree, NODE);
-            current_symbol += 6;
-        }
-        else if (strncmp("/*", current_symbol, 2) == 0)
-        {
-            current_symbol += 2;
-            while (strncmp("*/", current_symbol, 2) != 0)
-            {
-                if (*(current_symbol + 1) == '\0')
-                {
-                    printf ("Syntax error in %s: absent */, but there is /* on the line %d\n", tree->file_language->file_name, number_line);
-                    return nullptr;
-                }
-                current_symbol++;
-            }
-            current_symbol += 2;
-        }
-        else if (strncmp ("+", current_symbol, 1) == 0)
-        {
-            NODE = node_op_creater (nullptr, nullptr, nullptr, ADD);
-            NODE->number_line = number_line;
-            StackPush (stack_tree, NODE);
-            current_symbol += 1;
-        }
-        else if (strncmp ("-", current_symbol, 1) == 0)
-        {
-            NODE = node_op_creater (nullptr, nullptr, nullptr, SUB);
-            NODE->number_line = number_line;
-            StackPush (stack_tree, NODE);
-            current_symbol += 1;
-        }
-        else if (strncmp ("*", current_symbol, 1) == 0)
-        {
-            NODE = node_op_creater (nullptr, nullptr, nullptr, MUL);
-            NODE->number_line = number_line;
-            StackPush (stack_tree, NODE);
-            current_symbol += 1;
-        }
-        else if (strncmp ("/", current_symbol, 1) == 0)
-        {
-            NODE = node_op_creater (nullptr, nullptr, nullptr, DIV);
-            NODE->number_line = number_line;
-            StackPush (stack_tree, NODE);
-            current_symbol += 1;
-        }
-        else if (strncmp ("pow", current_symbol, 3) == 0)
-        {
-            NODE = node_op_creater (nullptr, nullptr, nullptr, POW);
-            NODE->number_line = number_line;
-            StackPush (stack_tree, NODE);
-            current_symbol += 3;
-        }
-        else if (strncmp ("sin", current_symbol, 3) == 0)
-        {
-            NODE = node_op_creater (nullptr, nullptr, nullptr, SIN);
-            NODE->number_line = number_line;
-            StackPush (stack_tree, NODE);
-            current_symbol += 3;        
-        }
-        else if (strncmp ("cos", current_symbol, 3) == 0)
-        {
-            NODE = node_op_creater (nullptr, nullptr, nullptr, COS); 
-            NODE->number_line = number_line;
-            StackPush (stack_tree, NODE); 
-            current_symbol += 3;     
-        }
-        else if (strncmp ("=", current_symbol, 1) == 0)
-        {
-            NODE = node_op_creater (nullptr, nullptr, nullptr, ASSIGN); 
-            NODE->number_line = number_line;
-            StackPush (stack_tree, NODE); 
-            current_symbol += 1;   
-        }
-//=======================================================================================
+            current_symbol += 2;                                               
+            COMMENT_CLOSE_CHECK(current_symbol);  
+        } 
+        else
+        #define DEF_OP(word, length, global_type, type) if (strncmp (word, current_symbol, length) == 0)                \
+                                                        {                                                               \
+                                                            NODE = node_op_creater (nullptr, nullptr, nullptr, type);   \
+                                                            NODE->number_line = number_line;                            \
+                                                            StackPush (stack_tree, NODE);                               \
+                                                            current_symbol += length;                                   \
+                                                        } else
+        #define DEF_FUNC(word, length, global_type, type)if (strncmp (word, current_symbol, length) == 0)               \
+                                                        {                                                               \
+                                                            NODE = node_func_creater (nullptr, nullptr, nullptr, type); \
+                                                            NODE->number_line = number_line;                            \
+                                                            StackPush (stack_tree, NODE);                               \
+                                                            current_symbol += length;                                   \
+                                                        } else
+        #define DEF_TYPE(word, length, global_type, type)if (strncmp (word, current_symbol, length) == 0)                   \
+                                                        {                                                                   \
+                                                            NODE = node_type_func_creater (nullptr, nullptr, nullptr, type);\
+                                                            NODE->number_line = number_line;                                \
+                                                            StackPush (stack_tree, NODE);                                   \
+                                                            current_symbol += length;                                       \
+                                                        } else
+        #define DEF_SEP(word, length, global_type, type)if (strncmp (word, current_symbol, length) == 0)                    \
+                                                        {                                                                   \
+                                                            NODE = node_signs_creater (nullptr, nullptr, nullptr, type);    \
+                                                            NODE->number_line = number_line;                                \
+                                                            StackPush (stack_tree, NODE);                                   \
+                                                            current_symbol += length;                                       \
+                                                        } else
+        #include "../code_generation.h"
 
-        else if (strncmp ("scanf", current_symbol, 5) == 0)
-        {
-            NODE = node_func_creater (nullptr, nullptr, nullptr, SCANF);  
-            NODE->number_line = number_line;
-            StackPush (stack_tree, NODE);
-            current_symbol += 5;   
-        }
-        else if (strncmp ("printf", current_symbol, 6) == 0)
-        {
-            NODE = node_func_creater (nullptr, nullptr, nullptr, PRINTF);
-            NODE->number_line = number_line;
-            StackPush (stack_tree, NODE);
-            current_symbol += 6;   
-        }
-
-//=======================================================================================
-        else if (strncmp ("(", current_symbol, 1) == 0)
-        {
-            NODE = node_signs_creater (nullptr, nullptr, nullptr, OPEN_STANDART_BRACKET);
-            NODE->number_line = number_line;
-            StackPush (stack_tree, NODE);
-            current_symbol += 1;
-        }
-        else if (strncmp (")", current_symbol, 1) == 0)
-        {
-            NODE = node_signs_creater (nullptr, nullptr, nullptr, CLOSE_STANDART_BRACKET);
-            NODE->number_line = number_line;
-            StackPush (stack_tree, NODE);
-            current_symbol += 1;
-        }
-        else if (strncmp ("{", current_symbol, 1) == 0)
-        {
-            NODE = node_signs_creater (nullptr, nullptr, nullptr, OPEN_CURLY_BRACKET);
-            NODE->number_line = number_line;
-            StackPush (stack_tree, NODE);
-            current_symbol += 1;
-        }
-        else if (strncmp ("}", current_symbol, 1) == 0)
-        {
-            NODE = node_signs_creater (nullptr, nullptr, nullptr, CLOSE_CURLY_BRACKET);
-            NODE->number_line = number_line;
-            StackPush (stack_tree, NODE);
-            current_symbol += 1;
-        }
-        else if (strncmp (",", current_symbol, 1) == 0)
-        {
-            NODE = node_signs_creater (nullptr, nullptr, nullptr, COMMA);
-            NODE->number_line = number_line;
-            StackPush (stack_tree, NODE);
-            current_symbol += 1;
-        }
-        else if (strncmp (";", current_symbol, 1) == 0)
-        {
-            NODE = node_signs_creater (nullptr, nullptr, nullptr, COMMA_POINT);
-            NODE->number_line = number_line;
-            StackPush (stack_tree, NODE);
-            current_symbol += 1;
-        }
-//=======================================================================================
-
-        else if (strncmp ("var", current_symbol, 3) == 0)
-        {
-            NODE = node_type_func_creater (nullptr, nullptr, nullptr, VAR);
-            NODE->number_line = number_line;
-            StackPush (stack_tree, NODE);
-            current_symbol += 3;
-        }
-        else if (strncmp ("void", current_symbol, 4) == 0)
-        {
-            NODE = node_type_func_creater (nullptr, nullptr, nullptr, VOID);
-            NODE->number_line = number_line;
-            StackPush (stack_tree, NODE);
-            current_symbol += 4;
-        }
-        else if (strncmp ("type", current_symbol, 4) == 0)
-        {
-            NODE = node_type_func_creater (nullptr, nullptr, nullptr, TYPE);
-            NODE->number_line = number_line;
-            StackPush (stack_tree, NODE);
-            current_symbol += 4;
-        }
-//=======================================================================================
-        else if (isdigit (*current_symbol))
+        #undef DEF_OP
+        #undef DEF_FUNC
+        #undef DEF_SEP
+        #undef DEF_TYPE
+        
+        /* else */ if (isdigit (*current_symbol))
         {
             double value = strtod (current_symbol, &current_symbol);
             if (*(current_symbol - 1) == ',')
@@ -256,8 +113,7 @@ Stack* tokinization (struct Tree* tree, char* language_file, size_t size_file)
         }
         else
         {
-            printf ("Syntax error in %s: unknown command on line %d", tree->file_language->file_name, number_line);
-            return nullptr;
+            UNKNOWN_COMMAND(number_line);
         }
         
         index++;
@@ -351,7 +207,7 @@ Node* GetGlobal (struct Tree* tree, struct Stack* token_tree, int* index)
 
             if (*index < (token_tree->size - 1) &&
                 token_tree->data[*index]->type == OPERATION && 
-                token_tree->data[*index]->op_type == ASSIGN)
+                token_tree->data[*index]->op_type == EQ)
             {
                 (*index)++;
                 RNODE = GetN (tree, token_tree, index);
@@ -666,7 +522,7 @@ Node* GetRet (struct Tree* tree, struct Stack* token_tree, int* index)
     int number_line = token_tree->data[*index]->number_line;
 
     if (token_tree->data[*index]->type == OPERATION &&
-        token_tree->data[*index]->op_type == RETURN)
+        token_tree->data[*index]->op_type == RET)
     {
         NODE = token_tree->data[*index];
         (*index)++;
@@ -697,6 +553,97 @@ Node* GetRet (struct Tree* tree, struct Stack* token_tree, int* index)
     }
     else
     {
+        NODE = GetCallVoid (tree, token_tree, index);
+        NULL_CHECK (NODE);
+    }
+
+    return NODE;
+}
+
+Node* GetCallVoid (struct Tree* tree, struct Stack* token_tree, int* index)
+{
+    assert (tree);
+    assert (token_tree);
+    assert (index);
+
+    Node* NODE = nullptr;
+    int number_line = token_tree->data[*index]->number_line;
+
+    if (token_tree->data[*index]->type == VARIABLE &&
+        token_tree->data[(*index) + 1]->type == SEPARATOR &&
+        token_tree->data[(*index) + 1]->separator_type == OPEN_STANDART_BRACKET)
+    {
+        NODE = token_tree->data[*index];
+        RNODE = node_creater (NODE, nullptr, nullptr, NIL);
+
+        (*index)++;
+        OPEN_STANDART_BRACKET_CHECK (index);
+        number_line = token_tree->data[*index]->number_line;
+        (*index)++;
+
+        LNODE = node_creater (NODE, nullptr, nullptr, PARAM);
+        Node* param_node = LNODE;
+
+        while (1)
+        {
+            L(param_node) = GetE (tree, token_tree, index);
+            P(L(param_node)) = param_node;
+
+            if (*index > (token_tree->size - 1))
+            {
+                printf ("Syntax error in %s: on line %d there is ( , but ) absent\n", tree->file_language->file_name, number_line);
+                return nullptr;
+            }
+            else if (token_tree->data[*index]->type == SEPARATOR &&                                                             
+                     token_tree->data[*index]->separator_type == CLOSE_STANDART_BRACKET)
+            {
+                R(param_node) = node_creater (param_node, nullptr, nullptr, NIL);
+                param_node = R(param_node);
+                (*index)++;
+                break;
+            }
+            else if (token_tree->data[*index]->type == SEPARATOR &&                                                             
+                     token_tree->data[*index]->separator_type == COMMA)
+            {
+                R(param_node) = node_creater (param_node, nullptr, nullptr, PARAM);
+                param_node = R(param_node);
+                (*index)++;
+            }
+            else
+            {
+                if (token_tree->data[*index]->type == SEPARATOR ||                                                                   
+                    token_tree->data[*index]->separator_type == COMMA)                                                         
+                {                                                                                                               
+                    printf ("Syntax error in %s: on line %d comma \",\" absent\n", tree->file_language->file_name, number_line); 
+                }
+                else
+                {
+                    printf ("Syntax error in %s: on line %d there is ( , but ) absent\n", tree->file_language->file_name, number_line);
+                }
+                return nullptr;
+            }
+        }
+
+        COMMA_POINT_CHECK(index);
+        (*index)++;
+
+        Node* call_node = node_creater (nullptr, 
+                                        NODE, 
+                                        node_creater (call_node, nullptr, nullptr, NIL), 
+                                        CALL);
+
+        PNODE = call_node;
+        NODE = call_node;
+
+        Node* st_node = node_creater (nullptr, 
+                                      NODE,
+                                      node_creater (st_node, nullptr, nullptr, NIL), 
+                                      ST);
+        PNODE = st_node;
+        NODE = st_node;
+    }
+    else
+    {
         NODE = GetIn (tree, token_tree, index);
         NULL_CHECK (NODE);
     }
@@ -714,7 +661,7 @@ Node* GetIn (struct Tree* tree, struct Stack* token_tree, int* index)
     int number_line = token_tree->data[*index]->number_line;
 
     if (token_tree->data[*index]->type == FUNCTION &&
-        token_tree->data[*index]->function_type == SCANF)
+        token_tree->data[*index]->function_type == IN)
     {
         NODE = token_tree->data[*index];
         RNODE = node_creater (NODE, nullptr, nullptr, NIL);
@@ -798,7 +745,7 @@ Node* GetOut (struct Tree* tree, struct Stack* token_tree, int* index)
     int number_line = token_tree->data[*index]->number_line;
 
     if (token_tree->data[*index]->type == FUNCTION &&
-        token_tree->data[*index]->function_type == PRINTF)
+        token_tree->data[*index]->function_type == OUT)
     {
         NODE = token_tree->data[*index];
         RNODE = node_creater (NODE, nullptr, nullptr, NIL);
@@ -895,7 +842,7 @@ Node* GetDeclaringVar (struct Tree* tree, struct Stack* token_tree, int* index)
 
             if (*index < (token_tree->size - 1) &&
                 token_tree->data[*index]->type == OPERATION && 
-                token_tree->data[*index]->op_type == ASSIGN)
+                token_tree->data[*index]->op_type == EQ)
             {
                 (*index)++;
                 RNODE = GetE (tree, token_tree, index);
@@ -948,7 +895,7 @@ Node* GetAssignVar (struct Tree* tree, struct Stack* token_tree, int* index)
 
         if (*index < (token_tree->size - 1) &&
             token_tree->data[*index]->type == OPERATION && 
-            token_tree->data[*index]->op_type == ASSIGN)
+            token_tree->data[*index]->op_type == EQ)
         {
             NODE = token_tree->data[*index];
             LNODE = variable_node;
@@ -1150,6 +1097,94 @@ Node* GetMathFunc (struct Tree* tree, struct Stack* token_tree, int* index)
     }
     else
     {   
+        NODE = GetCallType (tree, token_tree, index);
+        NULL_CHECK (NODE);
+    }
+
+    return NODE;
+}
+
+Node* GetCallType (struct Tree* tree, struct Stack* token_tree, int* index)
+{
+    assert (tree);
+    assert (token_tree);
+    assert (index);
+
+    Node* NODE = nullptr;
+    int number_line = token_tree->data[*index]->number_line;
+
+    if (token_tree->data[*index]->type == VARIABLE &&
+        token_tree->data[(*index) + 1]->type == SEPARATOR &&
+        token_tree->data[(*index) + 1]->separator_type == OPEN_STANDART_BRACKET)
+    {
+        NODE = token_tree->data[*index];
+        RNODE = node_creater (NODE, nullptr, nullptr, NIL);
+
+        (*index)++;
+        OPEN_STANDART_BRACKET_CHECK (index);
+        number_line = token_tree->data[*index]->number_line;
+        (*index)++;
+
+        LNODE = node_creater (NODE, nullptr, nullptr, PARAM);
+        Node* param_node = LNODE;
+
+        while (1)
+        {
+            L(param_node) = GetE (tree, token_tree, index);
+            P(L(param_node)) = param_node;
+
+            if (*index > (token_tree->size - 1))
+            {
+                printf ("Syntax error in %s: on line %d there is ( , but ) absent\n", tree->file_language->file_name, number_line);
+                return nullptr;
+            }
+            else if (token_tree->data[*index]->type == SEPARATOR &&                                                             
+                     token_tree->data[*index]->separator_type == CLOSE_STANDART_BRACKET)
+            {
+                R(param_node) = node_creater (param_node, nullptr, nullptr, NIL);
+                param_node = R(param_node);
+                (*index)++;
+                break;
+            }
+            else if (token_tree->data[*index]->type == SEPARATOR &&                                                             
+                     token_tree->data[*index]->separator_type == COMMA)
+            {
+                R(param_node) = node_creater (param_node, nullptr, nullptr, PARAM);
+                param_node = R(param_node);
+                (*index)++;
+            }
+            else
+            {
+                if (token_tree->data[*index]->type == SEPARATOR ||                                                                   
+                    token_tree->data[*index]->separator_type == COMMA)                                                         
+                {                                                                                                               
+                    printf ("Syntax error in %s: on line %d comma \",\" absent\n", tree->file_language->file_name, number_line); 
+                }
+                else
+                {
+                    printf ("Syntax error in %s: on line %d there is ( , but ) absent\n", tree->file_language->file_name, number_line);
+                }
+                return nullptr;
+            }
+        }
+
+        Node* call_node = node_creater (nullptr, 
+                                        NODE, 
+                                        node_creater (call_node, nullptr, nullptr, NIL), 
+                                        CALL);
+
+        PNODE = call_node;
+        NODE = call_node;
+
+        Node* st_node = node_creater (nullptr, 
+                                      NODE,
+                                      node_creater (st_node, nullptr, nullptr, NIL), 
+                                      ST);
+        PNODE = st_node;
+        NODE = st_node;
+    }
+    else
+    {
         NODE = GetV (tree, token_tree, index);
         NULL_CHECK (NODE);
     }
@@ -1231,6 +1266,10 @@ void tree_standart_print (FILE* language_tree, struct Node* root)
     {
         fprintf (language_tree, " FUNC \n");
     }
+    else if (root->type == CALL)
+    {
+        fprintf (language_tree, " CALL \n");
+    }
     else if (root->type == TYPE_FUNC)
     {
         switch (root->type_func_type)
@@ -1244,8 +1283,8 @@ void tree_standart_print (FILE* language_tree, struct Node* root)
     {
         switch (root->function_type)
         {
-            case (PRINTF): fprintf (language_tree, " OUT \n"); break;
-            case (SCANF) : fprintf (language_tree, " IN \n");  break;
+            case (OUT): fprintf (language_tree, " OUT \n"); break;
+            case (IN) : fprintf (language_tree, " IN \n");  break;
         }
     }
     else if (root->type == OPERATION)
@@ -1255,12 +1294,12 @@ void tree_standart_print (FILE* language_tree, struct Node* root)
             case (IF):     fprintf (language_tree, " IF \n");    break;
             case (ELSE):   fprintf (language_tree, " ELSE \n");  break;
             case (WHILE):  fprintf (language_tree, " WHILE \n"); break;
-            case (RETURN): fprintf (language_tree, " RET \n");   break;
+            case (RET):    fprintf (language_tree, " RET \n");   break;
             case (ADD):    fprintf (language_tree, " ADD \n");   break;
             case (SUB):    fprintf (language_tree, " SUB \n");   break;
             case (MUL):    fprintf (language_tree, " MUL \n");   break;
             case (DIV):    fprintf (language_tree, " DIV \n");   break;
-            case (ASSIGN): fprintf (language_tree, " EQ \n");    break;
+            case (EQ):     fprintf (language_tree, " EQ \n");    break;
             case (POW):    fprintf (language_tree, " POW \n");   break;
             case (SIN):    fprintf (language_tree, " SIN \n");   break;
             case (COS):    fprintf (language_tree, " COS \n");   break;

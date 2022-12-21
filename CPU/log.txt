@@ -1,0 +1,16 @@
+ERROR: file libr/Stack.cpp line 109 function Stack_pop
+Stack (ERROR #9: NULL_POP [0x7ffeea05b660] "&proc->stk" 
+{
+	left struct canary = baddf00ddeadbeaf
+	size = 0
+	capacity = 1
+	struct hash = 4268215235
+	stack hash = 1098774587
+	right struct canary = baddf00ddeadbeaf
+	data[0x7faab24058c8]
+	{
+		*[0] = NAN (Poison!)
+	}
+}
+
+

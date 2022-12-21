@@ -34,6 +34,8 @@ Node* GetIf (struct Tree* tree, struct Stack* token_tree, int* index);
 
 Node* GetRet (struct Tree* tree, struct Stack* token_tree, int* index);
 
+Node* GetCallVoid (struct Tree* tree, struct Stack* token_tree, int* index);
+
 Node* GetIn (struct Tree* tree, struct Stack* token_tree, int* index);
 
 Node* GetOut (struct Tree* tree, struct Stack* token_tree, int* index);
@@ -41,6 +43,8 @@ Node* GetOut (struct Tree* tree, struct Stack* token_tree, int* index);
 Node* GetDeclaringVar (struct Tree* tree, struct Stack* token_tree, int* index);
 
 Node* GetAssignVar (struct Tree* tree, struct Stack* token_tree, int* index);
+
+Node* GetCallType (struct Tree* tree, struct Stack* token_tree, int* index);
 
 Node* GetE (struct Tree* tree, struct Stack* token_tree, int* index);
 
